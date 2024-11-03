@@ -14,6 +14,9 @@ class NoGlobalSoundEvents : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("NoGlobalSoundEvents plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("globalSoundEvents", "true")
+            logger.info("NoGlobalSoundEvents plugin has been disabled.")
+        }
     }
 }
